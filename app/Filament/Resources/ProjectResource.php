@@ -17,24 +17,40 @@ class ProjectResource extends Resource
 {
     protected static ?string $model = Project::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-beaker';
+    protected static ?string $navigationGroup = 'Company';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('leader')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('members')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('leader')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'Ongoing' => 'Ongoing',
+                                'Completed' => 'Completed',
+                            ])
+                            ->native(false)
+                            ->required(),
+                    ])->columnSpan(1),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\Repeater::make('members')
+                            ->simple(
+                                Forms\Components\TextInput::make('member')
+                                    ->required()
+                                    ->maxLength(255),
+                            )
+                            ->addActionLabel('Add another member')
+                            ->defaultItems(3)
+                    ])->columnSpan(1),
             ]);
     }
 
@@ -43,11 +59,21 @@ class ProjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
+                    ->limit(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('leader')
-                    ->searchable(),
+                    ->limit(25)
+                    ->searchable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Ongoing' => 'warning',
+                        'Completed' => 'success',
+                    })
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -58,7 +84,10 @@ class ProjectResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('news')
+                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Ongoing')),
+                Tables\Filters\Filter::make('event')
+                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Completed')),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

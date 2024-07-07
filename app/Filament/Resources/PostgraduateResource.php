@@ -12,38 +12,63 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class PostgraduateResource extends Resource
 {
     protected static ?string $model = Postgraduate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $navigationGroup = 'Researchers';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('candidancy')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('supervisor')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('research_areas')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->image()
+                            ->imageEditor()
+                            ->fetchFileInformation(false),
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('candidancy')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('supervisor')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Select::make('status')
+                            ->options([
+                                'Active' => 'Active',
+                                'Inactive' => 'Inactive',
+                            ])
+                            ->native(false)
+                            ->required(),
+                    ])->columnSpan(1),
+
+                Forms\Components\Grid::make(1)
+                    ->schema([
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\Repeater::make('research_areas')
+                                    ->simple(
+                                        Forms\Components\TextInput::make('research_areas')
+                                            ->required()
+                                            ->maxLength(255),
+                                    )
+                                    ->addActionLabel('Add another research area')
+                                    ->defaultItems(3)
+                            ])->columnSpan(1),
+
+                    ])->columnSpan(1),
+
             ]);
     }
 
@@ -51,17 +76,34 @@ class PostgraduateResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->defaultImageUrl(asset('images/placeholderImage.png'))
+                    ->circular()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('candidancy')
-                    ->searchable(),
+                    ->description(fn (Postgraduate $record): string => Str::limit($record->candidancy, 25))
+                    ->limit(25)
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->limit(25)
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('supervisor')
-                    ->searchable(),
+                    ->limit(25)
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable()
+                    ->sortable()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Active' => 'success',
+                        'Inactive' => 'gray',
+                    })
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -72,7 +114,10 @@ class PostgraduateResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\Filter::make('active')
+                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Active')),
+                Tables\Filters\Filter::make('inactive')
+                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Inactive')),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),

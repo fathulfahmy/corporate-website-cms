@@ -19,7 +19,7 @@ class ProjectFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'leader' => fake()->name(),
-            'members' => json_encode(fake()->sentences(3)),
+            'members' => fake()->sentences(3),
             'status' => fake()->randomElement(['Completed', 'Ongoing'])
         ];
     }

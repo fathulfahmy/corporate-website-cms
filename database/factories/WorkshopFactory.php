@@ -19,7 +19,7 @@ class WorkshopFactory extends Factory
         return [
             'title' => fake()->sentence(),
             'subtitle' => fake()->sentence(),
-            'features' => json_encode(fake()->sentences(6)),
+            'features' => fake()->sentences(6),
         ];
     }
 }

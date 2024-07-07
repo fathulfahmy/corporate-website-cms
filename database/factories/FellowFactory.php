@@ -21,8 +21,8 @@ class FellowFactory extends Factory
             'name' => fake()->name(),
             'position' => fake()->jobTitle(),
             'email' => fake()->email(),
-            'qualifications' => json_encode(fake()->sentences(3)),
-            'research_areas' => json_encode(fake()->words(6)),
+            'qualifications' => fake()->sentences(3),
+            'research_areas' => fake()->words(6),
             'status' => fake()->randomElement(['Active', 'Inactive']),
         ];
     }

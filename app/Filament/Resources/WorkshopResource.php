@@ -12,26 +12,39 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
 
 class WorkshopResource extends Resource
 {
     protected static ?string $model = Workshop::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $navigationGroup = 'Company';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('subtitle')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('features')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('subtitle')
+                            ->required()
+                            ->maxLength(255),
+                    ])->columnSpan(1),
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\Repeater::make('features')
+                            ->simple(
+                                Forms\Components\TextInput::make('feature')
+                                    ->required()
+                                    ->maxLength(255),
+                            )
+                            ->addActionLabel('Add another feature')
+                            ->defaultItems(3),
+                    ])->columnSpan(1),
             ]);
     }
 
@@ -40,9 +53,10 @@ class WorkshopResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('title')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('subtitle')
-                    ->searchable(),
+                    ->description(fn (Workshop $record): string => Str::limit($record->subtitle, 100))
+                    ->limit(100)
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -50,7 +64,7 @@ class WorkshopResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(),
             ])
             ->filters([
                 //
