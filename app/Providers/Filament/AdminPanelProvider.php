@@ -64,6 +64,7 @@ class AdminPanelProvider extends PanelProvider
                 'success' => Color::Emerald,
                 'warning' => Color::Orange,
             ])
+            ->darkMode(false)
             ->font('Poppins')
             ->brandName('IICE')
             ->sidebarCollapsibleOnDesktop()
