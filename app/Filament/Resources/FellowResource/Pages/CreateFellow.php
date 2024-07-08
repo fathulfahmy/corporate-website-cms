@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateFellow extends CreateRecord
 {
     protected static string $resource = FellowResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

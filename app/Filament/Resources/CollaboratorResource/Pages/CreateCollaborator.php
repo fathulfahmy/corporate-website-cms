@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateCollaborator extends CreateRecord
 {
     protected static string $resource = CollaboratorResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }

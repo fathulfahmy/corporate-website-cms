@@ -20,6 +20,8 @@ class ProjectResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-beaker';
     protected static ?string $navigationGroup = 'Company';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -73,7 +75,7 @@ class ProjectResource extends Resource
                         'Ongoing' => 'warning',
                         'Completed' => 'success',
                     })
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -81,17 +83,14 @@ class ProjectResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                Tables\Filters\Filter::make('news')
-                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Ongoing')),
-                Tables\Filters\Filter::make('event')
-                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Completed')),
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -100,12 +99,6 @@ class ProjectResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
 
     public static function getPages(): array
     {

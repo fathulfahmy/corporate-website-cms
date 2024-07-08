@@ -22,11 +22,12 @@ class InboxResource extends Resource
     protected static ?string $navigationLabel = 'Inbox';
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
 
+    protected static ?string $recordTitleAttribute = 'sender';
+
     public static function canCreate(): bool
     {
         return false;
     }
-
     public static function canEdit(Model $record): bool
     {
         return false;
@@ -84,17 +85,29 @@ class InboxResource extends Resource
                     ->description(fn (Inbox $record): string => Str::limit($record->message, 50))
                     ->limit(50)
                     ->searchable(),
+                Tables\Columns\TextColumn::make('status')
+                    ->searchable()
+                    ->sortable()
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'Unread' => 'warning',
+                        'Read' => 'success',
+                    })
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Received')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(),
-            ])
-            ->filters([
-                //
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                Tables\Actions\Action::make('Open')
+                    ->action(function (Model $record, array $data) {
+                        $record['status'] = 'Read';
+                        $record->update($data);
+                        redirect(InboxResource::getUrl('view', [$record->id]));
+                    })
+                    ->button(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -103,12 +116,6 @@ class InboxResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
 
     public static function getPages(): array
     {

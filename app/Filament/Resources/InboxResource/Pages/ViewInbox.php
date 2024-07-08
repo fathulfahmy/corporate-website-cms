@@ -9,11 +9,4 @@ use Filament\Resources\Pages\ViewRecord;
 class ViewInbox extends ViewRecord
 {
     protected static string $resource = InboxResource::class;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\EditAction::make(),
-        ];
-    }
 }

@@ -21,6 +21,8 @@ class BlogResource extends Resource
     protected static ?string $navigationLabel = 'Blog';
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
+    protected static ?string $recordTitleAttribute = 'title';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -86,7 +88,7 @@ class BlogResource extends Resource
                         'News' => 'warning',
                         'Event' => 'info',
                     })
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -94,17 +96,14 @@ class BlogResource extends Resource
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                Tables\Filters\Filter::make('news')
-                    ->query(fn (Builder $query): Builder => $query->where('category', '=', 'News')),
-                Tables\Filters\Filter::make('event')
-                    ->query(fn (Builder $query): Builder => $query->where('category', '=', 'Event')),
+                    ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\DeleteAction::make(),
+                ])
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -113,12 +112,6 @@ class BlogResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
 
     public static function getPages(): array
     {

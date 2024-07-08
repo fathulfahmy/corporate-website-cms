@@ -22,6 +22,7 @@ class InboxFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'subject' => fake()->sentence(),
             'message' => fake()->paragraphs(3, true),
+            'status' => fake()->randomElement(['Unread', 'Read']),
         ];
     }
 }

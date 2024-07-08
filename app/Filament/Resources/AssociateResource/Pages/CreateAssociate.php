@@ -9,4 +9,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateAssociate extends CreateRecord
 {
     protected static string $resource = AssociateResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
