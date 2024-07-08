@@ -18,6 +18,7 @@ class SponsorResource extends Resource
     protected static ?string $model = Sponsor::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-currency-dollar';
     protected static ?string $navigationGroup = 'Company';
 
     protected static ?string $recordTitleAttribute = 'name';

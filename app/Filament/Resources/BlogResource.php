@@ -20,6 +20,7 @@ class BlogResource extends Resource
 
     protected static ?string $navigationLabel = 'Blog';
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-newspaper';
 
     protected static ?string $recordTitleAttribute = 'title';
 

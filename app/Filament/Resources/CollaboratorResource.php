@@ -18,6 +18,7 @@ class CollaboratorResource extends Resource
     protected static ?string $model = Collaborator::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-building-library';
     protected static ?string $navigationGroup = 'Company';
 
     protected static ?string $recordTitleAttribute = 'name';

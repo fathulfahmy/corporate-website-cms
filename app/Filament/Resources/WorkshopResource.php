@@ -19,6 +19,7 @@ class WorkshopResource extends Resource
     protected static ?string $model = Workshop::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-briefcase';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-briefcase';
     protected static ?string $navigationGroup = 'Company';
 
     protected static ?string $recordTitleAttribute = 'title';

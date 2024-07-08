@@ -19,6 +19,7 @@ class FellowResource extends Resource
     protected static ?string $model = Fellow::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-user';
     protected static ?string $navigationGroup = 'Researchers';
 
     protected static ?string $recordTitleAttribute = 'name';

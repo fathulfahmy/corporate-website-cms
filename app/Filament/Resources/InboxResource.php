@@ -21,6 +21,7 @@ class InboxResource extends Resource
 
     protected static ?string $navigationLabel = 'Inbox';
     protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-envelope';
 
     protected static ?string $recordTitleAttribute = 'sender';
 

@@ -18,6 +18,7 @@ class ProjectResource extends Resource
     protected static ?string $model = Project::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-beaker';
+    protected static ?string $activeNavigationIcon = 'heroicon-s-beaker';
     protected static ?string $navigationGroup = 'Company';
 
     protected static ?string $recordTitleAttribute = 'title';
