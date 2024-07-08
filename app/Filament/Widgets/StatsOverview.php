@@ -22,10 +22,10 @@ class StatsOverview extends BaseWidget
                 ->color('info')
                 ->description('Total ongoing projects')
                 ->descriptionIcon('heroicon-m-beaker'),
-            Stat::make('Projects', DB::table('blogs')->where('created_at', '>=' , Carbon::now()->month())->count())
+            Stat::make('Posts', DB::table('blogs')->where('created_at', '>=' , Carbon::now()->month())->count())
                 ->color('success')
-                ->description('News and event this month')
-                ->descriptionIcon('heroicon-m-beaker'),
+                ->description('Total news and events this month')
+                ->descriptionIcon('heroicon-m-newspaper'),
         ];
     }
 }

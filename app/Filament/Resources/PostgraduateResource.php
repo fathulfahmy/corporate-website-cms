@@ -116,12 +116,6 @@ class PostgraduateResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
             ])
-            ->filters([
-                Tables\Filters\Filter::make('active')
-                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Active')),
-                Tables\Filters\Filter::make('inactive')
-                    ->query(fn (Builder $query): Builder => $query->where('status', '=', 'Inactive')),
-            ])
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make(),
