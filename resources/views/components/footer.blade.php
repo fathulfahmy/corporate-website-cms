@@ -2,17 +2,18 @@
 <footer class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <!-- Grid -->
-        <div class="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
+        <div class="mb-10 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
             <div class="col-span-full hidden lg:col-span-1 lg:block">
                 <a class="flex-none text-xl font-semibold" href="/" aria-label="Brand">IICE</a>
-                <p class="mt-3 text-xs text-gray-600 sm:text-sm">Institute of Informatics and Computing in Energy</p>
+                <p class="mt-3 text-sm/6 text-gray-600 sm:text-sm/6">Institute of Informatics and<br>Computing in Energy
+                </p>
             </div>
             <!-- End Col -->
 
             <div>
-                <h4 class="text-xs font-semibold uppercase text-gray-900">Company</h4>
+                <h4 class="text-sm/6 font-semibold uppercase text-gray-900">Company</h4>
 
-                <div class="mt-3 grid space-y-3 text-sm">
+                <div class="mt-3 grid space-y-3 text-sm/6">
                     <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/about"
                             wire:navigate>About</a></p>
                     <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/sponsors"
@@ -27,9 +28,9 @@
             <!-- End Col -->
 
             <div>
-                <h4 class="text-xs font-semibold uppercase text-gray-900">Researchers</h4>
+                <h4 class="text-sm/6 font-semibold uppercase text-gray-900">Researchers</h4>
 
-                <div class="mt-3 grid space-y-3 text-sm">
+                <div class="mt-3 grid space-y-3 text-sm/6">
                     <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
                             wire:navigate>Associate</a></p>
                     <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
@@ -42,34 +43,37 @@
             </div>
             <!-- End Col -->
 
-            <div>
-                <h4 class="text-xs font-semibold uppercase text-gray-900">Projects</h4>
+            <div class="col-span-2 grid grid-cols-2 gap-6 md:col-span-1 md:grid-cols-1">
+                <div>
+                    <h4 class="text-sm/6 font-semibold uppercase text-gray-900">Projects</h4>
 
-                <div class="mt-3 grid space-y-3 text-sm">
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
-                            wire:navigate>Ongoing</a></p>
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
-                            wire:navigate>Completed</a></p>
+                    <div class="mt-3 grid space-y-3 text-sm/6">
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
+                                wire:navigate>Ongoing</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
+                                wire:navigate>Completed</a></p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-sm/6 font-semibold uppercase text-gray-900 md:mt-7">Resource</h4>
+
+                    <div class="mt-3 grid space-y-3 text-sm/6">
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/blog"
+                                wire:navigate>Blog</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/workshops"
+                                wire:navigate>Workshops</a></p>
+                    </div>
                 </div>
             </div>
             <!-- End Col -->
 
-            <div>
-                <h4 class="text-xs font-semibold uppercase text-gray-900">Resource</h4>
-
-                <div class="mt-3 grid space-y-3 text-sm">
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/blog" wire:navigate>Blog</a></p>
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/workshops" wire:navigate>Workshops</a></p>
-                </div>
-            </div>
-            <!-- End Col -->
         </div>
         <!-- End Grid -->
 
         <div class="mt-5 border-t border-gray-200 pt-5">
-            <div class="sm:flex sm:items-center sm:justify-between">
-                <div class="hidden items-center gap-x-3 sm:flex">
-                    <div class="ms-4 space-x-4 text-sm">
+            <div class="lg:flex lg:items-center lg:justify-between">
+                <div class="hidden items-center gap-x-3 lg:flex">
+                    <div class="ms-4 space-x-4 text-sm/6">
                         <span class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800">
                             © 2024 IICE. All Rights Reserved.
                         </span>
@@ -77,9 +81,10 @@
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <div class="mt-3 sm:hidden">
+                    <div class="mt-3 lg:hidden">
                         <a class="flex-none text-xl font-semibold" href="#" aria-label="Brand">IICE</a>
-                        <p class="mt-1 text-xs text-gray-600 sm:text-sm max-w-48">© 2024 Institute of Informatics and Computing in Energy</p>
+                        <p class="mt-1 text-sm/6 text-gray-600 sm:text-sm/6">© 2024 Institute of Informatics
+                            and<br>Computing in Energy</p>
                     </div>
 
                     <!-- Social Brands -->
