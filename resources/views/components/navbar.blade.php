@@ -1,4 +1,5 @@
-<header class="sticky inset-x-0 top-0 z-50 bg-white" x-data="{ drawer: false }">
+<header id="navbar" class="sticky inset-x-0 top-0 z-50 bg-white transition-[top] duration-300"
+    x-data="{ drawer: false }">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="/" class="-m-1.5 p-1.5">
@@ -36,17 +37,21 @@
                 </button>
 
                 <!--
-          'Product' flyout menu, show/hide based on flyout menu state.
+                'Product' flyout menu, show/hide based on flyout menu state.
 
-          Entering: "transition ease-out duration-200"
-            From: "opacity-0 translate-y-1"
-            To: "opacity-100 translate-y-0"
-          Leaving: "transition ease-in duration-150"
-            From: "opacity-100 translate-y-0"
-            To: "opacity-0 translate-y-1"
-        -->
+                Entering: "transition ease-out duration-200"
+                From: "opacity-0 translate-y-1"
+                To: "opacity-100 translate-y-0"
+                Leaving: "transition ease-in duration-150"
+                From: "opacity-100 translate-y-0"
+                To: "opacity-0 translate-y-1"
+                -->
                 <div class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
-                    x-show="popover" x-cloak>
+                    x-show="popover" x-cloak x-transition:enter="ease-out duration-200"
+                    x-transition:enter-start="opacity-0 translate-y-1"
+                    x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="ease-in duration-150"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 translate-y-1" @click.outside="popover = false">
                     <div class="p-4">
                         <div
                             class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
@@ -135,9 +140,16 @@
     <!-- Mobile menu, show/hide based on menu open state. -->
     <div class="lg:hidden" role="dialog" aria-modal="true" x-show="drawer" x-cloak>
         <!-- Background backdrop, show/hide based on slide-over state. -->
-        <div class="fixed inset-0 z-10"></div>
-        <div
-            class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="fixed inset-0 z-10 bg-gray-500 bg-opacity-75 transition-opacity" x-show="drawer" x-cloak
+            x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
+            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-trap.noscroll="drawer"
+            @click="drawer = false"></div>
+        <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+            x-show="drawer" x-cloak x-transition:enter="ease-out duration-300"
+            x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0"
+            x-transition:leave="ease-in duration-200" x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full">
             <div class="flex items-center justify-between">
                 <a href="/" class="-m-1.5 p-1.5">
                     <span class="sr-only">IICE</span>
@@ -204,7 +216,8 @@
                     </div>
                     <div class="py-6">
                         <a href="/contact"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact us</a>
+                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
+                            us</a>
                     </div>
                 </div>
             </div>

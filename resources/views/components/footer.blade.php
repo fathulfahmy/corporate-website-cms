@@ -1,6 +1,6 @@
 <!-- ========== FOOTER ========== -->
-<footer class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+<footer class="bg-white pb-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8" data-aos="fade-up" data-aos-offset="-300">
         <!-- Grid -->
         <div class="mb-10 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
             <div class="col-span-full hidden lg:col-span-1 lg:block">

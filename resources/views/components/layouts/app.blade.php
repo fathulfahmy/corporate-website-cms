@@ -7,7 +7,7 @@
 
     <title>{{ $title ?? 'IICE' }}</title>
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/js/hide-navbar.js'])
 </head>
 
 <body class="bg-white">

@@ -1,13 +1,13 @@
 <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:mx-0">
+        <div class="mx-auto max-w-2xl lg:mx-0" data-aos="fade-up">
             <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
             <p class="mt-2 text-lg leading-8 text-gray-600">Learn how to grow your business with our expert advice.</p>
         </div>
         <div
             class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             @foreach ($blogs as $blog)
-                <article class="flex max-w-xl flex-col items-start justify-between">
+                <article class="flex max-w-xl flex-col items-start justify-between" data-aos="fade-up">
                     <div class="group relative mx-auto h-44 w-56 flex-shrink-0 overflow-hidden rounded-xl sm:w-96">
                         <img class="size-full absolute start-0 top-0 rounded-xl object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                             src="{{ asset('storage/' . $blog->image) }}" alt="Blog image">
