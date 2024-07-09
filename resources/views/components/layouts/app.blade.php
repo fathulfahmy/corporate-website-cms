@@ -7,6 +7,7 @@
 
     <title>{{ $title ?? 'IICE' }}</title>
 
+    @filamentStyles
     @vite(['resources/js/app.js', 'resources/js/hide-navbar.js'])
 </head>
 
@@ -14,6 +15,8 @@
     <x-navbar />
     {{ $slot }}
     <x-footer />
+
+    @filamentScripts
 </body>
 
 </html>

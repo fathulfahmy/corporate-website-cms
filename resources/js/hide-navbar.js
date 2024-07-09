@@ -1,6 +1,5 @@
 function hideNavbar() {
     if (window.innerWidth >= 1024) {
-        console.log("desktop");
         var prevScrollpos = window.scrollY;
 
         window.onscroll = function () {
