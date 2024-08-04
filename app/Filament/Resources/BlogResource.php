@@ -18,83 +18,89 @@ class BlogResource extends Resource
 {
     protected static ?string $model = Blog::class;
 
-    protected static ?string $navigationLabel = 'Blog';
-    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
-    protected static ?string $activeNavigationIcon = 'heroicon-s-newspaper';
+    protected static ?string $navigationLabel = "Blog";
+    protected static ?string $navigationIcon = "heroicon-o-newspaper";
+    protected static ?string $activeNavigationIcon = "heroicon-s-newspaper";
 
-    protected static ?string $recordTitleAttribute = 'title';
+    protected static ?string $recordTitleAttribute = "title";
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
+        return $form->schema([
+            Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\FileUpload::make("image")
+                        ->image()
+                        ->imageEditor()
+                        ->fetchFileInformation(false),
+                    Forms\Components\TextInput::make("title")
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make("subtitle")
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\Select::make("category")
+                        ->options([
+                            "News" => "News",
+                            "Event" => "Event",
+                        ])
+                        ->native(false)
+                        ->required(),
+                ])
+                ->columnSpan(1),
 
-                Forms\Components\Section::make()
-                    ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->image()
-                            ->imageEditor()
-                            ->fetchFileInformation(false),
-                        Forms\Components\TextInput::make('title')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('subtitle')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\Select::make('category')
-                            ->options([
-                                'News' => 'News',
-                                'Event' => 'Event',
-                            ])
-                            ->native(false)
-                            ->required(),
-                    ])->columnSpan(1),
-
-                Forms\Components\Section::make()
-                    ->schema([
-                        Forms\Components\RichEditor::make('content')
-                            ->disableToolbarButtons([
-                                'attachFiles',
-                                'codeBlock',
-                                'h2',
-                                'h3',
-                            ])
-                            ->required(),
-                    ])->columnSpan(1),
-
-            ]);
+            Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\RichEditor::make("content")
+                        ->disableToolbarButtons([
+                            "attachFiles",
+                            "codeBlock",
+                            "h2",
+                            "h3",
+                        ])
+                        ->required(),
+                ])
+                ->columnSpan(1),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')
-                    ->defaultImageUrl(asset('images/placeholderImage.png'))
+                Tables\Columns\ImageColumn::make("image")
+                    ->defaultImageUrl(asset("images/placeholderImage.png"))
                     ->circular()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('title')
-                    ->description(fn (Blog $record): string => Str::limit($record->subtitle, 25))
+                Tables\Columns\TextColumn::make("title")
+                    ->description(
+                        fn(Blog $record): string => Str::limit(
+                            $record->subtitle,
+                            25,
+                        ),
+                    )
                     ->limit(25)
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('content')
+                Tables\Columns\TextColumn::make("content")
                     ->limit(50)
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('category')
+                Tables\Columns\TextColumn::make("category")
                     ->searchable()
                     ->sortable()
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'News' => 'warning',
-                        'Event' => 'info',
-                    })
+                    ->color(
+                        fn(string $state): string => match ($state) {
+                            "News" => "warning",
+                            "Event" => "info",
+                        },
+                    )
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make("created_at")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make("updated_at")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
@@ -104,7 +110,7 @@ class BlogResource extends Resource
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -113,14 +119,13 @@ class BlogResource extends Resource
             ]);
     }
 
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBlogs::route('/'),
-            'create' => Pages\CreateBlog::route('/create'),
-            'view' => Pages\ViewBlog::route('/{record}'),
-            'edit' => Pages\EditBlog::route('/{record}/edit'),
+            "index" => Pages\ListBlogs::route("/"),
+            "create" => Pages\CreateBlog::route("/create"),
+            "view" => Pages\ViewBlog::route("/{record}"),
+            "edit" => Pages\EditBlog::route("/{record}/edit"),
         ];
     }
 }

@@ -17,11 +17,11 @@ class BlogFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => '',
-            'title' => fake()->sentence(),
-            'subtitle' => fake()->sentence(),
-            'content' => fake()->paragraphs(3, true),
-            'category' => fake()->randomElement(['News', 'Event']),
+            "image" => "default.png",
+            "title" => fake()->sentence(),
+            "subtitle" => fake()->sentence(),
+            "content" => fake()->paragraphs(3, true),
+            "category" => fake()->randomElement(["News", "Event"]),
         ];
     }
 }

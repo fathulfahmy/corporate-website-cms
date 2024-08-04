@@ -9,23 +9,32 @@ use Illuminate\Support\Facades\DB;
 
 class StatsOverview extends BaseWidget
 {
-
-
     protected function getStats(): array
     {
         return [
-            Stat::make('Inbox', DB::table('inboxes')->where('status', '=', 'Unread')->count())
-                ->color('danger')
-                ->description('Total unread messages')
-                ->descriptionIcon('heroicon-m-envelope'),
-            Stat::make('Projects', DB::table('projects')->where('status', '=', 'Ongoing')->count())
-                ->color('info')
-                ->description('Total ongoing projects')
-                ->descriptionIcon('heroicon-m-beaker'),
-            Stat::make('Posts', DB::table('blogs')->where('created_at', '>=' , Carbon::now()->month())->count())
-                ->color('success')
-                ->description('Total news and events this month')
-                ->descriptionIcon('heroicon-m-newspaper'),
+            Stat::make(
+                "Inbox",
+                DB::table("inboxes")->where("status", "=", "Unread")->count(),
+            )
+                ->color("danger")
+                ->description("Total unread messages")
+                ->descriptionIcon("heroicon-m-envelope"),
+            Stat::make(
+                "Projects",
+                DB::table("projects")->where("status", "=", "Ongoing")->count(),
+            )
+                ->color("info")
+                ->description("Total ongoing projects")
+                ->descriptionIcon("heroicon-m-beaker"),
+            Stat::make(
+                "Posts",
+                DB::table("blogs")
+                    ->where("created_at", ">=", Carbon::now()->month())
+                    ->count(),
+            )
+                ->color("success")
+                ->description("Total news and events this month")
+                ->descriptionIcon("heroicon-m-newspaper"),
         ];
     }
 }

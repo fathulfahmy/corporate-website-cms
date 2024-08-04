@@ -8,12 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Inbox extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-        'sender',
-        'email',
-        'phone',
-        'subject',
-        'message',
-    ];
+
+    protected $fillable = ["sender", "email", "phone", "subject", "message"];
 }

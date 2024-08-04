@@ -14,18 +14,18 @@ class ListBlogs extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return [Actions\CreateAction::make()];
     }
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
-            'active' => Tab::make('News')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('category', '=', 'News')),
-            'inactive' => Tab::make('Event')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('category', '=', 'Event')),
+            "all" => Tab::make("All"),
+            "active" => Tab::make("News")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("category", "=", "News"),
+            ),
+            "inactive" => Tab::make("Event")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("category", "=", "Event"),
+            ),
         ];
     }
 }

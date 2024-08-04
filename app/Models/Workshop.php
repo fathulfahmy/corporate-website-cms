@@ -9,13 +9,9 @@ class Workshop extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'subtitle',
-        'features',
-    ];
+    protected $fillable = ["title", "subtitle", "features"];
 
     protected $casts = [
-        'features' => 'json'
+        "features" => "json",
     ];
 }

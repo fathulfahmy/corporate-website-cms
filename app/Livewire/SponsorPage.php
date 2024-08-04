@@ -8,6 +8,6 @@ class SponsorPage extends Component
 {
     public function render()
     {
-        return view('livewire.sponsor-page');
+        return view("pages.sponsor");
     }
 }

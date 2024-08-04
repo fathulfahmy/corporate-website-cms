@@ -17,9 +17,9 @@ class WorkshopFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
-            'subtitle' => fake()->sentence(),
-            'features' => fake()->sentences(6),
+            "title" => fake()->sentence(),
+            "subtitle" => fake()->sentence(),
+            "features" => fake()->sentences(6),
         ];
     }
 }

@@ -8,18 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Postdoctoral extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        'image',
-        'name',
-        'email',
-        'qualifications',
-        'research_areas',
-        'status',
+        "image",
+        "name",
+        "email",
+        "qualifications",
+        "research_areas",
+        "status",
     ];
 
     protected $casts = [
-        'qualifications' => 'json',
-        'research_areas' => 'json',
+        "qualifications" => "json",
+        "research_areas" => "json",
     ];
 }

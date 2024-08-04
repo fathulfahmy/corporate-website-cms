@@ -15,11 +15,13 @@ class ListInboxes extends ListRecords
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
-            'active' => Tab::make('Unread')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Unread')),
-            'inactive' => Tab::make('Read')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Read')),
+            "all" => Tab::make("All"),
+            "active" => Tab::make("Unread")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "=", "Unread"),
+            ),
+            "inactive" => Tab::make("Read")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "=", "Read"),
+            ),
         ];
     }
 }

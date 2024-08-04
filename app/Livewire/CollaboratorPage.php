@@ -8,6 +8,6 @@ class CollaboratorPage extends Component
 {
     public function render()
     {
-        return view('livewire.collaborator-page');
+        return view("pages.collaborator");
     }
 }

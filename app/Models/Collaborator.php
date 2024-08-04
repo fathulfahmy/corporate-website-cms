@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Collaborator extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-        'logo',
-        'name',
-    ];
+
+    protected $fillable = ["logo", "name"];
 }

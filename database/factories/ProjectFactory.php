@@ -17,10 +17,10 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(),
-            'leader' => fake()->name(),
-            'members' => fake()->sentences(3),
-            'status' => fake()->randomElement(['Completed', 'Ongoing'])
+            "title" => fake()->sentence(),
+            "leader" => fake()->name(),
+            "members" => fake()->sentences(3),
+            "status" => fake()->randomElement(["Completed", "Ongoing"]),
         ];
     }
 }

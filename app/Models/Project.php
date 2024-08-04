@@ -8,15 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    
-    protected $fillable = [
-        'title',
-        'leader',
-        'members',
-        'status',
-    ];
+
+    protected $fillable = ["title", "leader", "members", "status"];
 
     protected $casts = [
-        'members' => 'json',
+        "members" => "json",
     ];
 }

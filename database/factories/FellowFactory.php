@@ -17,13 +17,13 @@ class FellowFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => '',
-            'name' => fake()->name(),
-            'position' => fake()->jobTitle(),
-            'email' => fake()->email(),
-            'qualifications' => fake()->sentences(3),
-            'research_areas' => fake()->words(6),
-            'status' => fake()->randomElement(['Active', 'Inactive']),
+            "image" => "default.png",
+            "name" => fake()->name(),
+            "position" => fake()->jobTitle(),
+            "email" => fake()->email(),
+            "qualifications" => fake()->sentences(3),
+            "research_areas" => fake()->words(6),
+            "status" => fake()->randomElement(["Active", "Inactive"]),
         ];
     }
 }

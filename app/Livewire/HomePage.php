@@ -9,17 +9,17 @@ use Livewire\Component;
 
 class HomePage extends Component
 {
-    public $logos;
+    public $sponsors;
     public $blogs;
 
     public function mount()
     {
-        $this->logos = Sponsor::latest()->take(5)->pluck('logo')->toArray();
+        $this->sponsors = Sponsor::latest()->take(5)->get();
         $this->blogs = Blog::latest()->take(3)->get();
     }
 
     public function render()
     {
-        return view('livewire.home-page');
+        return view("pages.home");
     }
 }

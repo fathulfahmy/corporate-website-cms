@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Fellow extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
-        'image',
-        'name',
-        'position',
-        'email',
-        'qualifications',
-        'research_areas',
-        'status',
+        "image",
+        "name",
+        "position",
+        "email",
+        "qualifications",
+        "research_areas",
+        "status",
     ];
 
     protected $casts = [
-        'qualifications' => 'json',
-        'research_areas' => 'json',
+        "qualifications" => "json",
+        "research_areas" => "json",
     ];
 }

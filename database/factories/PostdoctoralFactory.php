@@ -17,12 +17,12 @@ class PostdoctoralFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => '',
-            'name' => fake()->name(),
-            'email' => fake()->email(),
-            'qualifications' => fake()->sentences(3),
-            'research_areas' => fake()->words(6),
-            'status' => fake()->randomElement(['Active', 'Inactive']),
+            "image" => "default.png",
+            "name" => fake()->name(),
+            "email" => fake()->email(),
+            "qualifications" => fake()->sentences(3),
+            "research_areas" => fake()->words(6),
+            "status" => fake()->randomElement(["Active", "Inactive"]),
         ];
     }
 }

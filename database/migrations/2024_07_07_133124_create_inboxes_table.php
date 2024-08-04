@@ -4,21 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('inboxes', function (Blueprint $table) {
+        Schema::create("inboxes", function (Blueprint $table) {
             $table->id();
-            $table->string('sender');
-            $table->string('email');
-            $table->string('phone')->nullable();
-            $table->string('subject');
-            $table->text('message');
-            $table->string('status')->default('Unread');
+            $table->string("sender");
+            $table->string("email");
+            $table->string("phone")->nullable();
+            $table->string("subject");
+            $table->text("message");
+            $table->string("status")->default("Unread");
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inboxes');
+        Schema::dropIfExists("inboxes");
     }
 };

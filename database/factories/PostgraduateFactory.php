@@ -17,13 +17,13 @@ class PostgraduateFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => '',
-            'name' => fake()->name(),
-            'candidancy' => fake()->sentence(),
-            'email' => fake()->email(),
-            'supervisor' => fake()->name(),
-            'research_areas' => fake()->words(6),
-            'status' => fake()->randomElement(['Active', 'Inactive']),
+            "image" => "default.png",
+            "name" => fake()->name(),
+            "candidancy" => fake()->sentence(),
+            "email" => fake()->email(),
+            "supervisor" => fake()->name(),
+            "research_areas" => fake()->words(6),
+            "status" => fake()->randomElement(["Active", "Inactive"]),
         ];
     }
 }

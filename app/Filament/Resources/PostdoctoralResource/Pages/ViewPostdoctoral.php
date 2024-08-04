@@ -12,8 +12,6 @@ class ViewPostdoctoral extends ViewRecord
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\EditAction::make(),
-        ];
+        return [Actions\EditAction::make()];
     }
 }

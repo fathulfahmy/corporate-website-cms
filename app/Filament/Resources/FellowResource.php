@@ -18,105 +18,116 @@ class FellowResource extends Resource
 {
     protected static ?string $model = Fellow::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
-    protected static ?string $activeNavigationIcon = 'heroicon-s-user';
-    protected static ?string $navigationGroup = 'Researchers';
+    protected static ?string $navigationIcon = "heroicon-o-user";
+    protected static ?string $activeNavigationIcon = "heroicon-s-user";
+    protected static ?string $navigationGroup = "Researchers";
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = "name";
 
     public static function form(Form $form): Form
     {
-        return $form
-            ->schema([
-                Forms\Components\Section::make()
-                    ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->image()
-                            ->imageEditor()
-                            ->fetchFileInformation(false),
-                        Forms\Components\TextInput::make('name')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('position')
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('email')
-                            ->email()
-                            ->required()
-                            ->maxLength(255),
-                        Forms\Components\Select::make('status')
-                            ->options([
-                                'Active' => 'Active',
-                                'Inactive' => 'Inactive',
-                            ])
-                            ->native(false)
-                            ->required(),
-                    ])->columnSpan(1),
+        return $form->schema([
+            Forms\Components\Section::make()
+                ->schema([
+                    Forms\Components\FileUpload::make("image")
+                        ->image()
+                        ->imageEditor()
+                        ->fetchFileInformation(false),
+                    Forms\Components\TextInput::make("name")
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make("position")
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make("email")
+                        ->email()
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\Select::make("status")
+                        ->options([
+                            "Active" => "Active",
+                            "Inactive" => "Inactive",
+                        ])
+                        ->native(false)
+                        ->required(),
+                ])
+                ->columnSpan(1),
 
-                Forms\Components\Grid::make(1)
-                    ->schema([
-
-                        Forms\Components\Section::make()
-                            ->schema([
-                                Forms\Components\Repeater::make('qualifications')
-                                    ->simple(
-                                        Forms\Components\TextInput::make('qualification')
-                                            ->required()
-                                            ->maxLength(255),
+            Forms\Components\Grid::make(1)
+                ->schema([
+                    Forms\Components\Section::make()
+                        ->schema([
+                            Forms\Components\Repeater::make("qualifications")
+                                ->simple(
+                                    Forms\Components\TextInput::make(
+                                        "qualification",
                                     )
-                                    ->addActionLabel('Add another qualification')
-                                    ->defaultItems(3)
-                            ])->columnSpan(1),
+                                        ->required()
+                                        ->maxLength(255),
+                                )
+                                ->addActionLabel("Add another qualification")
+                                ->defaultItems(3),
+                        ])
+                        ->columnSpan(1),
 
-                        Forms\Components\Section::make()
-                            ->schema([
-                                Forms\Components\Repeater::make('research_areas')
-                                    ->simple(
-                                        Forms\Components\TextInput::make('research_areas')
-                                            ->required()
-                                            ->maxLength(255),
+                    Forms\Components\Section::make()
+                        ->schema([
+                            Forms\Components\Repeater::make("research_areas")
+                                ->simple(
+                                    Forms\Components\TextInput::make(
+                                        "research_areas",
                                     )
-                                    ->addActionLabel('Add another research area')
-                                    ->defaultItems(3)
-                            ])->columnSpan(1),
-
-                    ])->columnSpan(1),
-
-            ]);
+                                        ->required()
+                                        ->maxLength(255),
+                                )
+                                ->addActionLabel("Add another research area")
+                                ->defaultItems(3),
+                        ])
+                        ->columnSpan(1),
+                ])
+                ->columnSpan(1),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\ImageColumn::make('image')
-                    ->defaultImageUrl(asset('images/placeholderImage.png'))
+                Tables\Columns\ImageColumn::make("image")
+                    ->defaultImageUrl(asset("images/placeholderImage.png"))
                     ->circular()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('name')
-                    ->description(fn (Fellow $record): string => Str::limit($record->position, 25))
+                Tables\Columns\TextColumn::make("name")
+                    ->description(
+                        fn(Fellow $record): string => Str::limit(
+                            $record->position,
+                            25,
+                        ),
+                    )
                     ->limit(25)
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('email')
+                Tables\Columns\TextColumn::make("email")
                     ->limit(25)
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\TextColumn::make("status")
                     ->searchable()
                     ->sortable()
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
-                        'Active' => 'success',
-                        'Inactive' => 'gray',
-                    })
+                    ->color(
+                        fn(string $state): string => match ($state) {
+                            "Active" => "success",
+                            "Inactive" => "gray",
+                        },
+                    )
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make("created_at")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make("updated_at")
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
@@ -126,7 +137,7 @@ class FellowResource extends Resource
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -135,14 +146,13 @@ class FellowResource extends Resource
             ]);
     }
 
-
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListFellows::route('/'),
-            'create' => Pages\CreateFellow::route('/create'),
-            'view' => Pages\ViewFellow::route('/{record}'),
-            'edit' => Pages\EditFellow::route('/{record}/edit'),
+            "index" => Pages\ListFellows::route("/"),
+            "create" => Pages\CreateFellow::route("/create"),
+            "view" => Pages\ViewFellow::route("/{record}"),
+            "edit" => Pages\EditFellow::route("/{record}/edit"),
         ];
     }
 }

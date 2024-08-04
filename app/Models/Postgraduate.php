@@ -10,16 +10,16 @@ class Postgraduate extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image',
-        'name',
-        'candidancy',
-        'email',
-        'research_areas',
-        'supervisor',
-        'status',
+        "image",
+        "name",
+        "candidancy",
+        "email",
+        "research_areas",
+        "supervisor",
+        "status",
     ];
 
     protected $casts = [
-        'research_areas' => 'json',
+        "research_areas" => "json",
     ];
 }

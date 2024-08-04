@@ -17,12 +17,12 @@ class InboxFactory extends Factory
     public function definition(): array
     {
         return [
-            'sender' => fake()->name(),
-            'email' => fake()->email(),
-            'phone' => fake()->phoneNumber(),
-            'subject' => fake()->sentence(),
-            'message' => fake()->paragraphs(3, true),
-            'status' => fake()->randomElement(['Unread', 'Read']),
+            "sender" => fake()->name(),
+            "email" => fake()->email(),
+            "phone" => fake()->phoneNumber(),
+            "subject" => fake()->sentence(),
+            "message" => fake()->paragraphs(3, true),
+            "status" => fake()->randomElement(["Unread", "Read"]),
         ];
     }
 }

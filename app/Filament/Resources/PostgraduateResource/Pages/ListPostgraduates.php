@@ -14,18 +14,18 @@ class ListPostgraduates extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return [Actions\CreateAction::make()];
     }
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
-            'active' => Tab::make('Active')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Active')),
-            'inactive' => Tab::make('Inactive')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Inactive')),
+            "all" => Tab::make("All"),
+            "active" => Tab::make("Active")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "=", "Active"),
+            ),
+            "inactive" => Tab::make("Inactive")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "=", "Inactive"),
+            ),
         ];
     }
 }

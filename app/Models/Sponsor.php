@@ -9,8 +9,5 @@ class Sponsor extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'logo',
-        'name',
-    ];
+    protected $fillable = ["logo", "name"];
 }

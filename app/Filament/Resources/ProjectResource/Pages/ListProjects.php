@@ -14,18 +14,18 @@ class ListProjects extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return [Actions\CreateAction::make()];
     }
     public function getTabs(): array
     {
         return [
-            'all' => Tab::make('All'),
-            'active' => Tab::make('Ongoing')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Ongoing')),
-            'inactive' => Tab::make('Completed')
-                ->modifyQueryUsing(fn (Builder $query) => $query->where('status', '=', 'Completed')),
+            "all" => Tab::make("All"),
+            "ongoing" => Tab::make("Ongoing")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "Ongoing"),
+            ),
+            "completed" => Tab::make("Completed")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("status", "Completed"),
+            ),
         ];
     }
 }
