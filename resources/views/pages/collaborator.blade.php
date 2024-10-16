@@ -1,3 +1,9 @@
-<div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
-</div>
+<x-container.center>
+    <x-typography.page class="py-8">
+        <x-slot:title>Collaborators</x-slot>
+        <x-slot:subtitle>Aute magna irure deserunt veniam aliqua magna enim voluptate.</x-slot>
+    </x-typography.page>
+    <x-container.table>
+        {{ $this->table }}
+    </x-container.table>
+</x-container.center>

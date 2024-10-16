@@ -8,5 +8,7 @@
         @foreach ($workshops as $workshop)
             <x-workshop.card :$workshop />
         @endforeach
+
+        {{ $workshops->links('components.nav.links') }}
     </x-container.center>
 </x-container.py>

@@ -1,4 +1,4 @@
-<div>
+<div {{ $attributes->merge(['class']) }}>
     @isset($label)
         <h2 class="mb-2 text-base font-semibold leading-7 text-primary-600">{{ $label }}</h2>
     @endisset
@@ -8,4 +8,5 @@
     @isset($subtitle)
         <p class="text-lg leading-8 text-gray-600">{{ $subtitle }}</p>
     @endisset
+    {{ $slot }}
 </div>

@@ -20,21 +20,18 @@ class BlogPage extends Component
     public function setCategory($category)
     {
         $this->category = $category;
-        return $this->redirect(
-            route("blog", ["category" => $category]),
-            navigate: true,
-        );
+        return $this->redirect(route("blog.index", $category), navigate: true,);
     }
 
     public function render()
     {
         $query = Blog::query()->orderBy("updated_at", "DESC");
 
-        return view("pages.blog", [
+        return view("pages.blog.index", [
             "blogs" =>
-                $this->category != ""
-                    ? $query->where("category", $this->category)->paginate(15)
-                    : $query->paginate(15),
+            $this->category != ""
+                ? $query->where("category", $this->category)->paginate(15)
+                : $query->paginate(15),
         ]);
     }
 }

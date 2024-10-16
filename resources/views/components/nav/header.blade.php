@@ -5,13 +5,11 @@
     prevScrollPos: window.scrollY,
 
     handleResize() {
+        this.hideNavbarOnScroll();
         if (window.innerWidth >= 1024) {
             this.drawer = false;
             this.dropdown = false;
             this.popover = false;
-            this.hideNavbarOnScroll();
-        } else {
-            window.onscroll = null;
         }
     },
 

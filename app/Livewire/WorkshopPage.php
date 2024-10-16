@@ -9,7 +9,7 @@ class WorkshopPage extends Component
 {
     public function render()
     {
-        $workshops = Workshop::all();
+        $workshops = Workshop::paginate(10);
 
         return view("pages.workshop", [
             "workshops" => $workshops,

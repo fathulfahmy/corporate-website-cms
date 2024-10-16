@@ -9,9 +9,9 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
-use Filament\Tables;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,7 +33,7 @@ class ProjectPage extends Component implements HasForms, HasTable
     {
         $this->status = $status;
         return $this->redirect(
-            route("project", ["status" => $status]),
+            route("projects", $status),
             navigate: true,
         );
     }
@@ -62,39 +62,49 @@ class ProjectPage extends Component implements HasForms, HasTable
                     ->badge()
                     ->color(
                         fn(string $state): string => match ($state) {
-                            "Ongoing" => "warning",
-                            "Completed" => "success",
+                            "ongoing" => "warning",
+                            "completed" => "success",
                         },
                     )
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make("created_at")
-                    ->dateTime()
+                    ->dateTime('j M, Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make("updated_at")
-                    ->dateTime()
+                    ->dateTime('j M, Y')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
             ])
             ->actions([
-                Tables\Actions\Action::make("View")
+                Tables\Actions\Action::make("Details")
+                    ->fillForm(fn(Project $record): array => [
+                        'title' => $record->title,
+                        'status' => $record->status,
+                        'updated_at' => $record->updated_at->format('j M, Y'),
+                        'leader' => $record->leader,
+                        'members' => $record->members,
+                    ])
                     ->form([
                         Grid::make(2)->schema([
                             Forms\Components\Section::make()
                                 ->schema([
                                     Forms\Components\TextInput::make(
                                         "title",
-                                    )->required(),
+                                    ),
                                     Forms\Components\TextInput::make(
-                                        "leader",
-                                    )->required(),
-                                    Forms\Components\Select::make(
                                         "status",
-                                    )->required(),
+                                    ),
+                                    Forms\Components\TextInput::make(
+                                        "updated_at",
+                                    ),
                                 ])
                                 ->columnSpan(1),
                             Forms\Components\Section::make()
                                 ->schema([
+                                    Forms\Components\TextInput::make(
+                                        "leader",
+                                    ),
                                     Forms\Components\Repeater::make("members")
                                         ->simple(
                                             Forms\Components\TextInput::make(
@@ -106,6 +116,7 @@ class ProjectPage extends Component implements HasForms, HasTable
                                 ->columnSpan(1),
                         ]),
                     ])
+                    ->button()
                     ->disabledForm()
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false),
@@ -114,6 +125,8 @@ class ProjectPage extends Component implements HasForms, HasTable
 
     public function render(): View
     {
-        return view("pages.project");
+        return view("pages.project", [
+            "status" => $this->status,
+        ]);
     }
 }

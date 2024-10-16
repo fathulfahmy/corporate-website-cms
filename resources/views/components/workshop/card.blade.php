@@ -29,7 +29,7 @@
             <div class="mx-auto max-w-xs px-8">
                 <p class="text-base font-semibold text-gray-600">Pay once, own it forever</p>
                 <p class="mt-6 flex items-baseline justify-center gap-x-2">
-                    <span class="text-5xl font-bold tracking-tight text-gray-900">$349</span>
+                    <span class="text-5xl font-bold tracking-tight text-gray-900">9,999</span>
                     <span class="text-sm font-semibold leading-6 tracking-wide text-gray-600">MYR</span>
                 </p>
                 <a href="#"

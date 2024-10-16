@@ -1,22 +1,22 @@
 <x-container.center>
     <x-typography.page class="py-8">
-        <x-slot:title>Meet our researchers</x-slot>
+        <x-slot:title>Researchers</x-slot>
         <x-slot:subtitle>Aute magna irure deserunt veniam aliqua magna enim voluptate.</x-slot>
     </x-typography.page>
 
     <x-container.table>
 
-        <x-filament::tabs label="Category">
-            <x-filament::tabs.item :active="$role == 'Fellow'" wire:click="setRole('Fellow')">
+        <x-filament::tabs label="Role">
+            <x-filament::tabs.item :active="$role == 'fellows'" wire:click="setRole('fellows')">
                 Fellows
             </x-filament::tabs.item>
-            <x-filament::tabs.item :active="$role == 'Associate'" wire:click="setRole('Associate')">
+            <x-filament::tabs.item :active="$role == 'associates'" wire:click="setRole('associates')">
                 Associates
             </x-filament::tabs.item>
-            <x-filament::tabs.item :active="$role == 'Postdoctoral'" wire:click="setRole('Postdoctoral')">
+            <x-filament::tabs.item :active="$role == 'postdoctorals'" wire:click="setRole('postdoctorals')">
                 Postdoctorals
             </x-filament::tabs.item>
-            <x-filament::tabs.item :active="$role == 'Postgraduate'" wire:click="setRole('Postgraduate')">
+            <x-filament::tabs.item :active="$role == 'postgraduates'" wire:click="setRole('postgraduates')">
                 Postgraduates
             </x-filament::tabs.item>
         </x-filament::tabs>

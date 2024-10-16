@@ -1,21 +1,21 @@
 <article class="flex max-w-xl flex-col items-start justify-between" data-aos="fade-up">
-    <div class="group relative mx-auto h-44 w-56 flex-shrink-0 overflow-hidden rounded-xl sm:w-96">
-        <img class="size-full absolute start-0 top-0 rounded-xl object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-            src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
-    </div>
-    <div class="mt-5 flex items-center gap-x-4 text-xs">
-        <time datetime="{{ $blog->updated_at->format('Y-m-d') }}"
-            class="text-gray-500">{{ $blog->updated_at->format('j M Y') }}</time>
-        <a href="{{ route('blog', ['category' => $blog->category]) }}" wire:navigate
-            class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $blog->category }}</a>
-    </div>
-    <div class="group relative">
-        <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-            <a href="#">
+    <a href="{{ route('blog.detail', ['id' => $blog->id]) }}" wire:navigate>
+        <div class="group relative mx-auto h-44 w-56 flex-shrink-0 overflow-hidden rounded-xl sm:w-96">
+            <img class="size-full absolute start-0 top-0 rounded-xl object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                src="{{ asset('storage/' . $blog->image) }}" alt="{{ $blog->title }}">
+        </div>
+        <div class="mt-5 flex items-center gap-x-4 text-xs">
+            <time datetime="{{ $blog->updated_at->format('j M Y') }}"
+                class="text-gray-500">{{ $blog->updated_at->format('j M Y') }}</time>
+            <a href="{{ route('blog.index', ['category' => $blog->category]) }}" wire:navigate
+                class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">{{ $blog->category }}</a>
+        </div>
+        <div class="group relative">
+            <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
                 <span class="absolute inset-0"></span>
                 {{ $blog->title }}
-            </a>
-        </h3>
-        <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $blog->subtitle }}</p>
-    </div>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ $blog->subtitle }}</p>
+        </div>
+    </a>
 </article>

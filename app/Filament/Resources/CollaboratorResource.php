@@ -29,8 +29,14 @@ class CollaboratorResource extends Resource
             Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\FileUpload::make("logo")
+                        ->directory('collaborators')
                         ->image()
+                        ->imageResizeMode('cover')
+                        ->imageCropAspectRatio('1:1')
                         ->imageEditor()
+                        ->imageEditorAspectRatios([
+                            '1:1',
+                        ])
                         ->fetchFileInformation(false),
                     Forms\Components\TextInput::make("name")
                         ->required()

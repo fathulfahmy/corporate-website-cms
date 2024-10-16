@@ -20,11 +20,11 @@ class ListBlogs extends ListRecords
     {
         return [
             "all" => Tab::make("All"),
-            "active" => Tab::make("News")->modifyQueryUsing(
+            "news" => Tab::make("News")->modifyQueryUsing(
                 fn(Builder $query) => $query->where("category", "=", "News"),
             ),
-            "inactive" => Tab::make("Event")->modifyQueryUsing(
-                fn(Builder $query) => $query->where("category", "=", "Event"),
+            "events" => Tab::make("Events")->modifyQueryUsing(
+                fn(Builder $query) => $query->where("category", "=", "Events"),
             ),
         ];
     }

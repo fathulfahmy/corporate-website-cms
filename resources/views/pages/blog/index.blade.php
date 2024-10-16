@@ -1,8 +1,6 @@
 <x-container.center>
-    <x-typography.page class="py-8">
-        <x-slot:title>Blog</x-slot>
-        <x-slot:subtitle>Aute magna irure deserunt veniam aliqua magna enim voluptate.</x-slot>
-    </x-typography.page>
+    <x-typography.page class="py-8" title="Blog"
+        subtitle="Aute magna irure deserunt veniam aliqua magna enim voluptate." />
 
     <x-container.table>
 
@@ -10,11 +8,11 @@
             <x-filament::tabs.item :active="$category == ''" wire:click="setCategory('')">
                 All
             </x-filament::tabs.item>
-            <x-filament::tabs.item :active="$category == 'News'" wire:click="setCategory('News')">
+            <x-filament::tabs.item :active="$category == 'news'" wire:click="setCategory('news')">
                 News
             </x-filament::tabs.item>
-            <x-filament::tabs.item :active="$category == 'Event'" wire:click="setCategory('Event')">
-                Event
+            <x-filament::tabs.item :active="$category == 'events'" wire:click="setCategory('events')">
+                Events
             </x-filament::tabs.item>
         </x-filament::tabs>
 

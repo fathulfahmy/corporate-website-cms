@@ -9,14 +9,18 @@
 
     @filamentStyles
     @vite(['resources/js/app.js'])
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body class="bg-white">
     <x-nav.header />
     {{ $slot }}
     <x-nav.footer />
-
     @filamentScripts
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

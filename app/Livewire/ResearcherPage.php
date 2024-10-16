@@ -15,7 +15,7 @@ class ResearcherPage extends Component
 
     public $role;
 
-    public function mount($role = "Fellow")
+    public function mount($role = "fellows")
     {
         $this->role = $role;
     }
@@ -24,7 +24,7 @@ class ResearcherPage extends Component
     {
         $this->role = $role;
         return $this->redirect(
-            route("researcher", ["role" => $role]),
+            route("researchers", $role),
             navigate: true,
         );
     }
@@ -32,22 +32,22 @@ class ResearcherPage extends Component
     public function render()
     {
         switch ($this->role) {
-            case "Fellow":
+            case "fellows":
                 $researchers = Fellow::query()
                     ->orderBy("updated_at", "DESC")
                     ->paginate(15);
                 break;
-            case "Associate":
+            case "associates":
                 $researchers = Associate::query()
                     ->orderBy("updated_at", "DESC")
                     ->paginate(15);
                 break;
-            case "Postdoctoral":
+            case "postdoctorals":
                 $researchers = Postdoctoral::query()
                     ->orderBy("updated_at", "DESC")
                     ->paginate(15);
                 break;
-            case "Postgraduate":
+            case "postgraduates":
                 $researchers = Postgraduate::query()
                     ->orderBy("updated_at", "DESC")
                     ->paginate(15);

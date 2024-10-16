@@ -16,10 +16,10 @@ class ListInboxes extends ListRecords
     {
         return [
             "all" => Tab::make("All"),
-            "active" => Tab::make("Unread")->modifyQueryUsing(
+            "unread" => Tab::make("Unread")->modifyQueryUsing(
                 fn(Builder $query) => $query->where("status", "=", "Unread"),
             ),
-            "inactive" => Tab::make("Read")->modifyQueryUsing(
+            "read" => Tab::make("Read")->modifyQueryUsing(
                 fn(Builder $query) => $query->where("status", "=", "Read"),
             ),
         ];

@@ -30,8 +30,14 @@ class BlogResource extends Resource
             Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\FileUpload::make("image")
+                        ->directory('blogs')
                         ->image()
+                        ->imageResizeMode('cover')
+                        ->imageCropAspectRatio('16:9')
                         ->imageEditor()
+                        ->imageEditorAspectRatios([
+                            '16:9',
+                        ])
                         ->fetchFileInformation(false),
                     Forms\Components\TextInput::make("title")
                         ->required()
@@ -42,7 +48,7 @@ class BlogResource extends Resource
                     Forms\Components\Select::make("category")
                         ->options([
                             "News" => "News",
-                            "Event" => "Event",
+                            "Events" => "Events",
                         ])
                         ->native(false)
                         ->required(),
@@ -69,7 +75,7 @@ class BlogResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\ImageColumn::make("image")
-                    ->defaultImageUrl(asset("images/placeholderImage.png"))
+                    ->defaultImageUrl(asset("default.png"))
                     ->circular()
                     ->toggleable(),
                 Tables\Columns\TextColumn::make("title")
@@ -92,7 +98,7 @@ class BlogResource extends Resource
                     ->color(
                         fn(string $state): string => match ($state) {
                             "News" => "warning",
-                            "Event" => "info",
+                            "Events" => "info",
                         },
                     )
                     ->toggleable(isToggledHiddenByDefault: true),

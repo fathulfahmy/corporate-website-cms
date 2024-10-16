@@ -30,8 +30,11 @@ class PostgraduateResource extends Resource
             Forms\Components\Section::make()
                 ->schema([
                     Forms\Components\FileUpload::make("image")
+                        ->directory('postgraduates')
                         ->image()
+                        ->avatar()
                         ->imageEditor()
+                        ->circleCropper()
                         ->fetchFileInformation(false),
                     Forms\Components\TextInput::make("name")
                         ->required()

@@ -21,7 +21,7 @@ class BlogFactory extends Factory
             "title" => fake()->sentence(),
             "subtitle" => fake()->sentence(),
             "content" => fake()->paragraphs(3, true),
-            "category" => fake()->randomElement(["News", "Event"]),
+            "category" => fake()->randomElement(["News", "Events"]),
         ];
     }
 }

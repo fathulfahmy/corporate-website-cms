@@ -1,6 +1,6 @@
 <!-- ========== FOOTER ========== -->
 <footer class="bg-white pb-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8" data-aos="fade-up" data-aos-offset="-300">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <!-- Grid -->
         <div class="mb-10 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
             <div class="col-span-full hidden lg:col-span-1 lg:block">
@@ -31,14 +31,14 @@
                 <h4 class="text-sm/6 font-semibold uppercase text-gray-900">Researchers</h4>
 
                 <div class="mt-3 grid space-y-3 text-sm/6">
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
-                            wire:navigate>Associate</a></p>
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
-                            wire:navigate>Fellow</a></p>
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
-                            wire:navigate>Postdoctoral</a></p>
-                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/researchers"
-                            wire:navigate>Postgraduate</a></p>
+                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                            href="{{ route('researchers', 'associates') }}" wire:navigate>Associates</a></p>
+                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                            href="{{ route('researchers', 'fellows') }}" wire:navigate>Fellows</a></p>
+                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                            href="{{ route('researchers', 'postdoctorals') }}" wire:navigate>Postdoctorals</a></p>
+                    <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                            href="{{ route('researchers', 'postgraduates') }}" wire:navigate>Postgraduates</a></p>
                 </div>
             </div>
             <!-- End Col -->
@@ -48,18 +48,20 @@
                     <h4 class="text-sm/6 font-semibold uppercase text-gray-900">Projects</h4>
 
                     <div class="mt-3 grid space-y-3 text-sm/6">
-                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
-                                wire:navigate>Ongoing</a></p>
-                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/projects"
-                                wire:navigate>Completed</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                                href="{{ route('projects', 'ongoing') }}" wire:navigate>Ongoing</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                                href="{{ route('projects', 'completed') }}" wire:navigate>Completed</a></p>
                     </div>
                 </div>
                 <div>
                     <h4 class="text-sm/6 font-semibold uppercase text-gray-900 md:mt-7">Resource</h4>
 
                     <div class="mt-3 grid space-y-3 text-sm/6">
-                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/blog"
-                                wire:navigate>Blog</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                                href="{{ route('blog.index', 'news') }}" wire:navigate>News</a></p>
+                        <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800"
+                                href="{{ route('blog.index', 'events') }}" wire:navigate>Events</a></p>
                         <p><a class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800" href="/workshops"
                                 wire:navigate>Workshops</a></p>
                     </div>
@@ -75,7 +77,7 @@
                 <div class="hidden items-center gap-x-3 lg:flex">
                     <div class="ms-4 space-x-4 text-sm/6">
                         <span class="inline-flex gap-x-2 text-gray-600 hover:text-gray-800">
-                            © 2024 IICE. All Rights Reserved.
+                            &copy; 2024 IICE. All Rights Reserved.
                         </span>
                     </div>
                 </div>
@@ -83,7 +85,7 @@
                 <div class="flex items-center justify-between">
                     <div class="mt-3 lg:hidden">
                         <a class="flex-none text-xl font-semibold" href="#" aria-label="Brand">IICE</a>
-                        <p class="mt-1 text-sm/6 text-gray-600 sm:text-sm/6">© 2024 Institute of Informatics
+                        <p class="mt-1 text-sm/6 text-gray-600 sm:text-sm/6">&copy; 2024 Institute of Informatics
                             and<br>Computing in Energy</p>
                     </div>
 
