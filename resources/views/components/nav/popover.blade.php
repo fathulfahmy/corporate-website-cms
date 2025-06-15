@@ -40,7 +40,7 @@
                         Blog
                         <span class="absolute inset-0"></span>
                     </a>
-                    <p class="mt-1 text-gray-600">Get a better understanding of your traffic</p>
+                    <p class="mt-1 text-gray-600">Explore updates from our research team</p>
                 </div>
             </div>
             <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
@@ -57,7 +57,7 @@
                         Researchers
                         <span class="absolute inset-0"></span>
                     </a>
-                    <p class="mt-1 text-gray-600">Speak directly to your customers</p>
+                    <p class="mt-1 text-gray-600">Meet researchers driving innovation forward</p>
                 </div>
             </div>
             <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
@@ -74,7 +74,7 @@
                         Projects
                         <span class="absolute inset-0"></span>
                     </a>
-                    <p class="mt-1 text-gray-600">Your customers’ data will be safe and secure</p>
+                    <p class="mt-1 text-gray-600">Discover projects shaping energy computing</p>
                 </div>
             </div>
             <div class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
@@ -91,7 +91,7 @@
                         Workshops
                         <span class="absolute inset-0"></span>
                     </a>
-                    <p class="mt-1 text-gray-600">Connect with third-party tools</p>
+                    <p class="mt-1 text-gray-600">Join trainings to enhance your expertise</p>
                 </div>
             </div>
         </div>

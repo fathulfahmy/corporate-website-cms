@@ -5,10 +5,9 @@
         <x-slot:subtitle>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
             suscipit eaque, iste dolor cupiditate blanditiis ratione.</x-slot>
         <x-slot:img>
-            <img src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            <img src="https://images.unsplash.com/photo-1579567761406-4684ee0c75b6?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Product screenshot"
-                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-                width="2432" height="1442">
+                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 aspect-video">
         </x-slot>
 
         <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
@@ -62,10 +61,9 @@
         <x-slot:subtitle>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
             suscipit eaque, iste dolor cupiditate blanditiis ratione.</x-slot>
         <x-slot:img>
-            <img src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            <img src="https://images.unsplash.com/photo-1626908013943-df94de54984c?q=80&w=3273&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Product screenshot"
-                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-                width="2432" height="1442">
+                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 aspect-video">
         </x-slot>
 
         <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
@@ -119,10 +117,9 @@
         <x-slot:subtitle>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis
             suscipit eaque, iste dolor cupiditate blanditiis ratione.</x-slot>
         <x-slot:img>
-            <img src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+            <img src="https://images.unsplash.com/photo-1626908013351-800ddd734b8a?q=80&w=3086&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="Product screenshot"
-                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-                width="2432" height="1442">
+                class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0 aspect-video">
         </x-slot>
 
         <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">

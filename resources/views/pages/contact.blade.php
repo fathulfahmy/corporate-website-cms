@@ -1,6 +1,6 @@
 <x-container.backdrop>
     <x-container.py>
-        <x-typography.page title="Contact Us" subtitle="Aute magna irure deserunt veniam aliqua magna enim voluptate." />
+        <x-typography.page title="Contact Us" subtitle="Connect with us for collaborations and inquiries" />
         <form wire:submit="submitContactForm" class="mx-auto mt-16 max-w-xl sm:mt-20">
             <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-3">
                 <div class="sm:col-span-3">

@@ -1,6 +1,6 @@
 <x-container.center>
     <x-typography.page class="py-8" title="Blog"
-        subtitle="Aute magna irure deserunt veniam aliqua magna enim voluptate." />
+        subtitle="Explore updates from our research team" />
 
     <x-container.table>
 
